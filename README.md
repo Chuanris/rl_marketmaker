@@ -1,7 +1,5 @@
 # RL Market Maker
 
-**English** | [中文](README_zh.md)
-
 A research implementation of a **bilateral reinforcement learning market maker** on a simulated limit order book (LOB).
 The agent simultaneously quotes on both bid and ask sides, manages inventory risk, and is trained end-to-end with Proximal Policy Optimization (PPO).
 
@@ -23,7 +21,6 @@ The agent simultaneously quotes on both bid and ask sides, manages inventory ris
 - [Running Tests](#running-tests)
 - [Recent Changes](#recent-changes)
 - [Roadmap](#roadmap)
-- [中文說明](README_zh.md)
 
 ---
 
