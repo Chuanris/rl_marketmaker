@@ -512,14 +512,16 @@ class BilateralAgentAttention(nn.Module):
         - FFN adds nonlinear capacity within each Transformer block
     """
 
-    def __init__(self, envs, n_levels=5, drop_feature='drift', use_ofi=False,
+    def __init__(self, envs=None, n_levels=5, drop_feature='drift', use_ofi=False,
                  d_model=32, n_heads=2, n_layers=2, ffn_dim=64, dropout=0.1,
-                 variance_scaling=True):
+                 variance_scaling=True, obs_dim=None, action_dim=None):
         n_hidden_units = 128
         super().__init__()
 
-        obs_dim = np.array(envs.single_observation_space.shape).prod()
-        action_dim = np.prod(envs.single_action_space.shape) - 1
+        if obs_dim is None:
+            obs_dim = int(np.array(envs.single_observation_space.shape).prod())
+        if action_dim is None:
+            action_dim = int(np.prod(envs.single_action_space.shape)) - 1
 
         self.n_levels = n_levels
         self.drop_feature = drop_feature
